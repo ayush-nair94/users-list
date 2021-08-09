@@ -1,0 +1,23 @@
+.nav-header {
+    background: #1f14d2;
+    background: linear-gradient(
+90deg
+, #1f14d2 0%, #1010d9 22%, #00d4ff 100%);
+    
+    padding: 15px;
+
+    img {
+        height: 35px;
+        margin-right: 12px;
+        margin-left: 12px;
+    }
+
+    span {
+        font-size: 25px;
+        color: #ffffff;
+        font-weight: 300;
+        display: inline-block;
+        position: relative;
+        top: -7px;
+    }
+}

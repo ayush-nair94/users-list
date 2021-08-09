@@ -1,0 +1,32 @@
+<div class="col-md-12 users-list-box">
+    <h2 class="heading">Users List</h2>
+    <input
+        type="text"
+        class="search-bar"
+        placeholder="Search by name"
+        [(ngModel)]="searchTerm"
+      />
+    <li class="user-div" *ngFor="let user of userData | paginate : {
+        itemsPerPage: pageSize,
+        currentPage: page,
+        totalItems: count
+      }; let i=index">
+        <div class="user-header">
+            <img class="user-image" src={{user.avatar}}>
+            <span class="user-data">{{user.first_name}} {{user.last_name}}</span>
+            <span class="user-email">{{user.email}}</span>
+            <div *ngIf="user.expanded" class="user-data-box" [@slideInOut]>
+                <user [userDetails]="user" (deleteUserData)="deleteUser($event)"></user>
+            </div>
+            <img class="expand-icon" src="/assets/chevron.png" [ngClass]="{'reverse': user.expanded }" (click)="expand(i)" [@rotatedState]='user.state'>
+        </div>
+    </li>
+    <div class="col-md-12 pagination-div">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          [responsive]="true"
+          (pageChange)="handlePageChange($event)"
+        ></pagination-controls>
+      </div>
+</div>
